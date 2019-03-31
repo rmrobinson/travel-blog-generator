@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package faltung.blog.travel;
+
+// Airport contains relevant fields describing a single airport
+message Airport {
+    string friendly_name = 1;
+    string iata_code = 2;
+    string icao_code = 3;
+    string city_code = 4;
+    string country_code = 5;
+    double latitude = 6;
+    double longitude = 7;
+    string timezone = 8;
+}
+
+// Airline contains relevant fields describing a single airline
+message Airline {
+    string friendly_name = 1;
+    string iata_code = 2;
+    string icao_code = 3;
+    string country_code = 4;
+}
+
+// Airplane contains relevant fields describing a single airplane
+message Airplane {
+    string friendly_name = 1;
+    string iata_code = 2;
+    string icao_code = 3;
+    string manufacturer_name = 4;
+}
+
+// Flight contains relevant fields describing a single flight.
+// This does not link to the above data, but contains globally unique references,
+// to cut down on data duplication during storage.
+message Flight {
+    string flight_code = 1;
+    string airline_icao_code = 2;
+    string departure_airport_icao_code = 3;
+    string arrival_airport_icao_code = 4;
+    string airplane_icao_code = 5;
+    string departure_date = 6;
+    int64 distance = 7;
+}
