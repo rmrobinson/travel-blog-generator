@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package faltung.blog.travel;
+
+import "google/protobuf/timestamp.proto";
+import "flight.proto";
+
+// Trip contains information about a single trip.
+message Trip {
+    string name = 1;
+    google.protobuf.Timestamp start_time = 2;
+    google.protobuf.Timestamp end_time = 3;
+    repeated Flight flights = 4;
+
+    repeated JournalEntry journal_entries = 5;
+    repeated Photo photos = 6;
+}
+
+// Photo contains a single photo representation.
+message Photo {
+    string name = 1;
+    google.protobuf.Timestamp create_at = 2;
+    google.protobuf.Timestamp update_at = 3;
+    string display_name = 4;
+    string description = 5;
+
+    string camera_make = 6;
+    string camera_model = 7;
+}
+
+// JournalEntry contains a single journal entry document.
+message JournalEntry {
+    string name = 1;
+    google.protobuf.Timestamp create_at = 2;
+    google.protobuf.Timestamp update_at = 3;
+    string time_zone = 4;
+    string language_code = 5;
+    string display_name = 6;
+    string description = 7;
+
+    string mime_type = 8;
+    bytes contents = 9;
+}
